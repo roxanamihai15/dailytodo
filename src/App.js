@@ -47,7 +47,7 @@ function App() {
       <>
         <BrowserRouter>
           <Routes>
-            < Route path="/auth" element={<Authentication />} />
+            < Route path="/" element={<Authentication />} />
             < Route path="*" element={<ErrorPage />} />
 
             {/* private pages */}

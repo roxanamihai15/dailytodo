@@ -15,7 +15,7 @@ function Header() {
 		await logOut();
 
 		if (!error) {
-			navigate("/auth");
+			navigate("/");
 		}
 	};
 

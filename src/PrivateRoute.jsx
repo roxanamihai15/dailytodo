@@ -13,7 +13,7 @@ function PrivateRoute() {
         {projectAuth.currentUser ? (
                 <Outlet />
             ) : (
-                <Navigate to="/auth" state={{ from: location }} replace />
+                <Navigate to="/" state={{ from: location }} replace />
             )
         }
     </>
