@@ -5,8 +5,6 @@ import {
 	updateDoc,
 	deleteDoc,
 	getFirestore,
-	getDoc,
-	getDocs,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import TodoItem from "../components/TodoItem";

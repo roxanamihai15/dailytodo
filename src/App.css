@@ -1,40 +1,10 @@
+/* * {
+    outline: 1px solid red;
+} */
+
 * {
 	box-sizing: border-box;
 }
-
-/* utilities */
-/* flexbox */
-/* .d-inline {
-	display: inline;
-}
-
-.d-flex {
-	display: flex;
-}
-
-.d-flex-column {
-	flex-direction: column;
-}
-
-.d-flex-space-between {
-	justify-content: space-between;
-}
-
-.align-center {
-	align-items: center;
-}
-
-.centred {
-	justify-content: space-between;
-	align-items: center;
-}
-
-.d-grid {
-	display: grid;
-}
-.grid-centred {
-	place-items: center;
-} */
 
 .auth-container {
 	min-height: 100vh;
@@ -71,11 +41,7 @@
 	text-decoration: underline;
 }
 
-@media screen and (max-width: 600px) {
-	.auth-form-container {
-		width: 100%;
-	}
-}
+
 
 /* homepage */
 .main-container {
@@ -83,9 +49,9 @@
 	background-color: var(--white-color);
 }
 
-.container-list {
+/* .container-list {
 	padding: 2rem 1rem;
-}
+} */
 
 .form-container button {
 	align-self: stretch;
@@ -160,11 +126,13 @@ nav {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 50%;
+	/* left: 50%; */
+	left: 48%;
 	transform: translateX(-50%);
 	max-width: 800px;
-	min-width: 400px;
+	/* min-width: 400px; */
 	width: 60%;
+    padding-inline: 1rem
 }
 
 .placeholder-container {
@@ -196,7 +164,7 @@ li {
 li p {
 	flex-grow: 1;
 	background-color: var(--white-color);
-	padding-inline: 1rem;
+	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 	height: 100%;
 	display: flex;
@@ -205,11 +173,10 @@ li p {
 
 ul::-webkit-scrollbar {
 	width: 10px;
-	padding-left: 30px;
-	margin-left: 30px; /* width of the entire scrollbar */
 }
 
 ul::-webkit-scrollbar-track {
+    /* margin-right: 5px; */
 	background: #c9c9c9; /* color of the tracking area */
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -239,4 +206,20 @@ li p {
 
 .info {
 	line-height: 1.3;
+}
+
+
+@media screen and (max-width: 600px) {
+	.auth-form-container {
+		width: 100%;
+	}
+
+    .container-list ul {
+        width: 98%;
+        /* padding-inline: 1rem */
+    }
+    .container-list {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
 }

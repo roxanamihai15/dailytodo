@@ -1,4 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { projectAuth } from '../firebase'
 
 let error = null;
 const auth = getAuth();
