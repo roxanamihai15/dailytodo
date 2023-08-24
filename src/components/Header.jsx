@@ -16,6 +16,7 @@ function Header() {
 
 		if (!error) {
 			navigate("/");
+            console.log('logout component: success logout');
 		}
 	};
     
