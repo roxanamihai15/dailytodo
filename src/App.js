@@ -46,6 +46,7 @@ function App() {
   return (
       <>
         <BrowserRouter>
+        {/* <BrowserRouter basename="/dailytodoroxana.netlify.app/"> */}
           <Routes>
             < Route path="/" element={<Authentication />} />
             < Route path="*" element={<ErrorPage />} />
