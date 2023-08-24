@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { browserSessionPersistence, getAuth, setPersistence } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,5 +19,16 @@ const app = initializeApp(firebaseConfig)
 // Initialize Firestore
 const db = getFirestore(app);
 
+// Set authentication persistence mode
+const auth = getAuth(app);
+setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+        // Persistence mode set successfully
+        console.log(' setting persistence success');
+    })
+    .catch((error) => {
+        console.error('Error setting persistence:', error);
+    });
+
 export const projectAuth = getAuth(app);
-export { db };
+export { db, auth };

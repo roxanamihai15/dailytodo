@@ -34,7 +34,7 @@ function PrivateRoute() {
         // If authentication state is still being checked, you can render a loading indicator
         return (
             <div className="container-loading">
-                <div class="loading">
+                <div className="loading">
                     <span></span>
                     <span></span>
                     <span></span>
