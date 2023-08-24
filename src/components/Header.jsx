@@ -18,9 +18,7 @@ function Header() {
 			navigate("/");
 		}
 	};
-
-	console.log(auth.currentUser.email);
-
+    
 	return (
 		<nav>
 			<p>Welcome {auth.currentUser.email}! 😃</p>

@@ -51,9 +51,10 @@ function App() {
             < Route path="*" element={<ErrorPage />} />
 
             {/* private pages */}
-            <Route element={<PrivateRoute />}>
+            {/* <Route element={<PrivateRoute />}>
               < Route path="/home" element={<Homepage />} />
-            </Route>
+            </Route> */}
+            <Route path="/home" element={<PrivateRoute />} />
           </Routes>
         </BrowserRouter>
 
