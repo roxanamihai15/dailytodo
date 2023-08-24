@@ -1,4 +1,6 @@
-import { projectAuth } from '../firebase'
+// import { projectAuth } from '../firebase'
+import { auth } from '../firebase'
+
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 import { getFirestore, collection, addDoc } from "firebase/firestore";
@@ -7,7 +9,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 const database = getFirestore();
 
 let error = null;
-const auth = getAuth();
+// const auth = getAuth();
 
 const signUp = async ( email, password) => {
     error = null;

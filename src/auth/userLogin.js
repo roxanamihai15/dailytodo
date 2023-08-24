@@ -1,8 +1,10 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { projectAuth } from '../firebase'
+// import { projectAuth } from '../firebase'
+import { auth } from '../firebase'
+
 
 let error = null;
-const auth = getAuth();
+// const auth = getAuth();
 
 
 const login = async ( email, password) => {

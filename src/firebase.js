@@ -30,5 +30,5 @@ setPersistence(auth, browserSessionPersistence)
         console.error('Error setting persistence:', error);
     });
 
-export const projectAuth = getAuth(app);
+// export const projectAuth = getAuth(app);
 export { db, auth };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { projectAuth } from './firebase'
+// import { projectAuth } from './firebase'
+import { auth } from './firebase'
 import { getAuth } from 'firebase/auth'
 import Homepage from './pages/Homepage'
 
