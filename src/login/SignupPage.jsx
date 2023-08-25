@@ -46,14 +46,12 @@ function SignupPage({ toggleForm }) {
 			setErrorMsg({});
 
 			if (error === "Firebase: Error (auth/email-already-in-use).") {
-				setErrorMsg({ already_used: "account già in uso" });
+				setErrorMsg({ already_used: "This email is already registered" });
 				// return
-			} else if (
-				error ===
-				"Firebase: Password should be at least 6 characters (auth/weak-password)."
-			) {
+			} else if (error === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
 				setErrorMsg({
-					min_length: "La password deve contenere almeno 6 caratteri",
+					// min_length: "La password deve contenere almeno 6 caratteri",
+					min_length: "Password must be 6 or more characters.",
 				});
 				console.log(error);
 			} else {
@@ -72,7 +70,7 @@ function SignupPage({ toggleForm }) {
 
 	return (
 		<div className="auth-form-container">
-			<h1>Signup to your account</h1>
+			<h1>Create your account</h1>
 
 			<form action="" onSubmit={handleSignOut}>
 				<TextField
@@ -130,15 +128,19 @@ function SignupPage({ toggleForm }) {
 				{error && <p>{errorMsg.wrong_something}</p>}
 
 				<p>
-					Hai già un account?
+					Already have an account?
 					<button onClick={toggleForm} className="btn-link">
 						Log in
 					</button>
 				</p>
 				<p className="info">
-					Per accedere non riceverai nessuna mail di conferma, puoi usare
-					qualsiasi mail anche inesistente per iscriverti nel form signup.
+                    To access, you won't receive any confirmation email. <br/>
+                    You can use any email, even a nonexistent one, to sign up through the signup form.
 				</p>
+				{/* <p className="info">
+                    Per accedere, non riceverai alcuna email di conferma. 
+                    Per iscriverti puoi utilizzare qualsiasi indirizzo email, anche uno inesistente.				
+                </p> */}
 			</form>
 		</div>
 	);

@@ -50,13 +50,13 @@ function LoginPage({ toggleForm }) {
 			// setErrorMsg(error)
 			if (loginError === "Firebase: Error (auth/wrong-password).") {
 				// setErrorMsg('password sbagliata');
-				setErrorMsg({ ...errorMsg, wrong_password: "password sbagliata" });
+				setErrorMsg({ ...errorMsg, wrong_password: "Invalid password" });
 				console.log(errorMsg);
 				console.log("entro qui?");
 			}
 			if (loginError === "Firebase: Error (auth/user-not-found).") {
 				//  setErrorMsg('account sbagliata');
-				setErrorMsg({ ...errorMsg, wrong_account: "ACCOUNT sbagliato" });
+				setErrorMsg({ ...errorMsg, wrong_account: "Couldn't find your account" });
 				console.log(errorMsg);
 				console.log("entro qui?");
 			}
@@ -128,14 +128,16 @@ function LoginPage({ toggleForm }) {
 						}
 						label="Password"
 					/>
-					<FormHelperText>{errorMsg.wrong_password}</FormHelperText>
+					{errorMsg.wrong_password && <FormHelperText>{errorMsg.wrong_password}</FormHelperText>}
 				</FormControl>
 
 				{!error?.wrong_something && (
 					<div>
-						<p>{errorMsg.wrong_something}</p>{" "}
+						<FormHelperText error>{errorMsg.wrong_something}</FormHelperText>
+						{/* <p className="error">{errorMsg.wrong_something}</p> */}
 					</div>
 				)}
+
 				<Button
 					variant="contained"
 					type="submit"
@@ -145,17 +147,23 @@ function LoginPage({ toggleForm }) {
 					Login
 				</Button>
 				<p>
-					Non hai ancora un account?
+					Don't have an account?
 					<button onClick={toggleForm} className="btn-link">
 						Sign up
 					</button>
 				</p>
 				<p className="info">
-					Per accedere non riceverai nessuna mail di conferma, puoi usare
-					qualsiasi mail anche inesistente per iscriverti nel form signup.
-					Invece se vuoi accedere senza andare al form di signup puoi farlo
-					usando queste credenziali Email: prova@gmail.com Password: 123456
+					You won't receive any confirmation email to complete the access. You can use any email address, even a non-existent one, to sign up through the registration form.  <br/>
+                    <br/> Alternatively, if you wish to access without going through the signup form, you can do so using the following credentials: <br/>
+                    <span>Email</span> prova@gmail.com <br/>
+                    <span>Password</span> 123456
 				</p>
+				{/* <p className="info">
+                    Non verrà inviata alcuna email di conferma per il processo di accesso. È possibile utilizzare qualsiasi indirizzo email, anche se non esistente, per registrarsi tramite il modulo di Sign up.
+                    Tuttavia, se si preferisce accedere senza passare attraverso il modulo di iscrizione, è possibile farlo utilizzando le seguenti credenziali:                    
+                    <span>Email:</span> prova@gmail.com
+                    <span>Password:</span> 123456
+				</p> */}
 			</form>
 		</div>
 	);

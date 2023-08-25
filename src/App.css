@@ -207,8 +207,22 @@ li p {
 	border-left: 10px solid orange;
 }
 
+.auth-form-container p {
+    padding-top: 1rem;
+}
+.auth-form-container p.Mui-error {
+    padding-top: 0;
+}
+
+
 .info {
 	line-height: 1.3;
+    /* white-space: pre-line; */
+    white-space: pre-wrap;
+}
+
+.info span {
+    font-weight: 600;
 }
 
 
