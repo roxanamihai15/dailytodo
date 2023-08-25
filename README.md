@@ -11,10 +11,10 @@ Apri [http://localhost:3000](http://localhost:3000) per visualizzarla sul browse
 
 ### Librerie utilizzate:
 
--React-router-dom
--Firebase (Firestore e Auth)
--Material UI
--Icons Material UI
+- React-router-dom
+- Firebase (Firestore e Auth)
+- Material UI
+- Icons Material UI
 
 ### Deployment
 
