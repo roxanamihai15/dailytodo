@@ -71,12 +71,6 @@ function LoginPage({ toggleForm }) {
 		}
 	};
 
-	// function handleSubmit(e) {
-	//     e.preventDefault();
-	//     console.log("email:", email);
-	//     console.log("Password:", password);
-	// }
-
 	// per input psw
 	const [showPassword, setShowPassword] = React.useState(false);
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -143,6 +137,7 @@ function LoginPage({ toggleForm }) {
 					type="submit"
 					fullWidth
 					// onClick={login}
+                    color="secondary"
 				>
 					Login
 				</Button>

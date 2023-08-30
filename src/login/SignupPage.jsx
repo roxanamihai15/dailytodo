@@ -117,6 +117,7 @@ function SignupPage({ toggleForm }) {
 				</FormControl>
 
 				<Button
+                    color="secondary"
 					variant="contained"
 					fullWidth
 					type="submit"

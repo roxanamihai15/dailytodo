@@ -10,25 +10,7 @@ const EditTaskModal = ({ todo, isOpen, onClose }) => {
       setEditedTitle(event.target.value);
     };
   
-    // const handleUpdate = () => {
-    //   onUpdate(todo, editedTitle);
-    //   onClose();
-    // };
-
     const [editedTitle, setEditedTitle] = useState("");
-
-    // const handleUpdateTask = async () => {
-    //     try {
-    //       // Call your update function here
-    //       await updateTaskTitle(todo.id, editedTitle);
-    
-    //       // Close the modal after updating
-    //       onClose();
-    //     } catch (error) {
-    //       console.error("Error updating task:", error);
-    //       // Handle error if necessary
-    //     }
-    //   };
 
     useEffect(() => {
         if (isOpen && todo) {
@@ -81,7 +63,7 @@ const EditTaskModal = ({ todo, isOpen, onClose }) => {
           />
       </DialogContent>
       <DialogActions sx={{ pb: 3}}>
-        <Button onClick={onClose} color="secondary">Cancel</Button>
+        <Button onClick={onClose} color="primary">Cancel</Button>
         <Button onClick={handleUpdateTask} variant="contained" color="secondary">
           Update Task
         </Button>

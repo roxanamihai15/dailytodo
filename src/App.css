@@ -10,7 +10,7 @@
 
 	min-height: 100svh;
 	padding: 2rem;
-	background-color: rgba(100, 148, 237, 0.384);
+	background-color: var(--primary-color);
 	display: grid;
 	place-items: center;
 }
@@ -20,9 +20,9 @@
 	margin-inline: auto;
 	padding: 1rem;
 
-	border: 1px solid #454545;
+	border: 1px solid var(--text-primary);
 	border-radius: 0.5rem;
-	background-color: rgba(255, 255, 255);
+	background-color: var(--text-accent);
 }
 
 .auth-form-container h1 {
@@ -37,7 +37,7 @@
 .btn-link {
 	border: none;
 	background-color: unset;
-	color: cornflowerblue;
+	color: var(--primary-color-darker);
 	font-size: 1rem;
 	text-decoration: underline;
 }
@@ -47,7 +47,7 @@
 /* homepage */
 .main-container {
 	min-height: 100vh;
-	background-color: var(--white-color);
+	background-color: var(--text-accent);
 }
 
 /* .container-list {
@@ -57,9 +57,9 @@
 .form-container button {
 	align-self: stretch;
 }
-.container-list button {
+/* .container-list button {
 	height: 100%;
-}
+} */
 
 .form-container {
 	display: grid;
@@ -80,7 +80,7 @@
 }
 
 .container-list ul li:first-of-type {
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
 .form-container {
@@ -101,10 +101,30 @@
 /* navbar */
 nav {
 	display: flex;
-	justify-content: flex-end;
+    flex-wrap: wrap;
+	justify-content: space-between;
 	align-items: center;
 	gap: 1rem;
 	padding: 1rem 1rem 0;
+}
+
+nav div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+	gap: 1rem;
+    margin-left: auto;
+}
+
+nav .dark-mode {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--primary-color);
+
+    display: grid;
+    place-items: center;
 }
 
 .main-container {
@@ -127,12 +147,11 @@ nav {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	/* left: 50%; */
-	left: 48%;
+	left: 50%;
 	transform: translateX(-50%);
 	max-width: 800px;
 	/* min-width: 400px; */
-	width: 60%;
+	width: 70%;
     padding-inline: 1rem
 }
 
@@ -164,7 +183,7 @@ li {
 
 li p {
 	flex-grow: 1;
-	background-color: var(--white-color);
+	background-color: var(--text-accent);
 	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 	height: 100%;
@@ -188,10 +207,10 @@ ul::-webkit-scrollbar-track {
 }
 
 ul::-webkit-scrollbar-thumb {
-	background-color: var(--provvisorio-color); /* color of the scroll thumb */
+	background-color: var(--accent-color); /* color of the scroll thumb */
 }
 ul::-webkit-scrollbar-thumb:hover {
-	background-color: #8d4df3; /* color of the scroll thumb */
+	background-color: var(--accent-color); /* color of the scroll thumb */
 }
 
 p.completed {
@@ -204,7 +223,7 @@ button.completed {
 }
 
 li p {
-	border-left: 10px solid orange;
+	border-left: 10px solid var(--accent-color);
 }
 
 .auth-form-container p {
@@ -226,7 +245,7 @@ li p {
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
 	.auth-form-container {
 		width: 100%;
 	}
@@ -238,6 +257,10 @@ li p {
     .container-list {
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
+    }
+
+    .container-list ul {
+        left: 48%;
     }
 }
 
@@ -261,7 +284,7 @@ li p {
     animation-fill-mode: both;
     height: 10px;
     width: 10px;
-    background: #2838c9;
+    background: var(--primary-color-darker);
     position: absolute;
     left: 0;
     top: 0;
@@ -290,4 +313,16 @@ li p {
   100% {
     opacity: 0.1;
   }
+}
+
+/* stile mui */
+.container-list .MuiButtonBase-root.MuiButton-root {
+    min-width: unset;
+    place-self: start;
+    margin-top: 9px;
+    padding: 5px 10px;
+}
+
+.container-list .MuiButtonBase-root.MuiCheckbox-root {
+    place-self: start;
 }

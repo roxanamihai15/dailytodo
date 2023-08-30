@@ -1,8 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function ErrorPage() {
   return (
-    <div>ErrorPage</div>
+    <div className='error-404'>
+        <h1>ErrorPage</h1>
+        <p>Go to <Link to="/home">Homepage</Link></p>  
+    </div>
   )
 }
 

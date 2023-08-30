@@ -61,51 +61,86 @@ table {
 
 
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
 :root {
-  --white-color: #f9fafc;
-  /* --gray-color: #F5F5F5; */
-  /* --accent-color: #A162F7; */
+  --text-primary: #354953;
+  --accent-color: orange;
+  --accent-color--darker: #ff892c;
   --primary-color: #E2E5FF;
-  --black-color: #464646;
-  --provvisorio-color: #9c27b0;
-
+  --primary-color-darker: #6f7eff;
+  --text-accent: #f9fafc;
+}
+.darkMode {
+  --text-primary: #f9fafc;
+  --accent-color: orange;
+  --accent-color--darker: #ff892c;
+  --primary-color: #7b88ff;
+  --primary-color-darker: #293fff;
+  --text-accent: #354953;
 }
 
 body {
-  font-family: 'Lexend', sans-serif;
   font-family: 'DM Sans', sans-serif;
+}
+
+p, li, h1, h2 {
+    color: var(--text-primary);
+}
+.placeholder-container svg path {
+    fill: var(--text-primary);
 }
 
 /* non funziona */
 button {
   font-family: 'Lexend', sans-serif;
-  /* font-weight: 300; */
 }
 
-
-/* html, body {
-  height: 100%;
-} */
-
-/* pagina interna */
-/* 
-
-
-body {
-
-} */
 .textFieldWithoutPseudo .MuiInputBase-root::before,
 .textFieldWithoutPseudo .MuiInputBase-root::after {
     content: none !important; /* Use !important to ensure the styles override existing ones */
+}
+
+.form-container .MuiFormControl-root,
+.form-container .MuiInputBase-root.MuiFilledInput-root {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.form-container .MuiButtonBase-root.MuiButton-root {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: unset;
+}
+
+.form-container .MuiButtonBase-root.MuiButton-root,
+.auth-form-container .MuiButtonBase-root.MuiButton-root,
+.MuiDialogActions-root .MuiButtonBase-root.MuiButton-root
+ {
+    box-shadow: unset;
+
+    transition: all 1s;
+}
+.form-container .MuiButtonBase-root.MuiButton-root:hover,
+.auth-form-container .MuiButtonBase-root.MuiButton-root:hover,
+.MuiDialogActions-root .MuiButtonBase-root.MuiButton-root:hover
+ {
+    background-color: var(--accent-color--darker);
+}
+
+nav .MuiButtonBase-root.MuiButton-root {
+    border: 1px solid var(--accent-color);
+    font-weight: 700;
 }
 
 form, li {
   display: flex;
   align-items: center;
 }
+
+
 
 /* form button, li button {
   align-self: stretch;
@@ -120,4 +155,11 @@ form, li {
 
   /* position: relative;
   bottom: 0; */
+}
+
+.error-404 {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    height: 100svh;
 }

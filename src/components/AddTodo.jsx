@@ -9,19 +9,6 @@ function AddTodo() {
 	const db = getFirestore();
 	const [title, setTitle] = useState("");
 
-	// il submit è asincrono
-	// const handleSubmit = async(e) => {
-	//     e.preventDefault()
-	//     if (title !== '') {
-	//         await addDoc(collection(db, "todos"), {
-	//             title,
-	//             completed: false
-	//         });
-	//         // ripulisco il campo input
-	//         setTitle('')
-	//     }
-	// }
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (title !== "") {

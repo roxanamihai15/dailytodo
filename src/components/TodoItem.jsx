@@ -2,27 +2,12 @@ import React, { useState } from 'react'
 import { Button, Checkbox } from '@mui/material';
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import EditTaskModal from './EditTaskModal';
 
 function TodoItem({ todo, toggleComplete, handleDelete, handleEdit }) {
 
     const [newTitle, setNewTitle] = useState(todo.title)
-
-    // const handleChange = (e) => {
-    //     e.preventDefault()
-    //     if (todo.complete === true) {
-    //         setNewTitle(todo.title)
-    //     } else {
-    //         todo.title = ''
-    //         setNewTitle(e.target.value)
-    //     }
-    // }
-
-    // const [checked, setChecked] = useState(true);
-    // const handleChangeCheckbox = (event) => {
-    //     setChecked(event.target.checked);
-    // };
-
     // 
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [selectedTodo, setSelectedTodo] = useState(null);
@@ -43,7 +28,7 @@ function TodoItem({ todo, toggleComplete, handleDelete, handleEdit }) {
         <Checkbox
             checked={todo.completed}
             onChange={() => toggleComplete(todo)}
-            color="secondary"
+            color="primary"
             // inputProps={{ 'aria-label': 'controlled' }}
         />
 
@@ -52,7 +37,7 @@ function TodoItem({ todo, toggleComplete, handleDelete, handleEdit }) {
         <Button
             className={todo.completed ? 'completed' : null}
             variant="outlined"
-            color="secondary"
+            color="primary"
             onClick={() => handleEditButtonClick(todo)}
             sx={{ borderRadius: 2, ml: 1 }}
         >
@@ -66,13 +51,13 @@ function TodoItem({ todo, toggleComplete, handleDelete, handleEdit }) {
             onClose={handleCloseEditModal}
         />
 
-        <Button variant="outlined" color="secondary"
-            // className={todo.completed ? 'completed' : null}
+        <Button variant="outlined" color="primary"
             onClick={() => handleDelete(todo.id)}
             sx={{ borderRadius: 2, ml: 1, mr: 1 }}
         >
             <span className="visually-hidden">Delete {task} </span>
-            <DeleteIcon fontSize="small" />
+            {/* <DeleteIcon fontSize="small" /> */}
+            <CloseRoundedIcon fontSize="small" />
         </Button>
     </li>
   )
