@@ -1,27 +1,20 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 // import { projectAuth } from '../firebase'
 import { auth } from '../firebase'
 
 
 let error = null;
-// const auth = getAuth();
 
-
+// riceverà questi 2 argomenti: email e psw
 const login = async ( email, password) => {
-    error = null;
+    error = null;  //in caso ci fossero errori precedenti li cancello
 
     try {
         const res = await signInWithEmailAndPassword(auth, email, password);
         error = null;
-        console.log(res.user);
-        console.log("User signed in successfully.");
-        // return res
         return null; // Nessun errore in caso di successo
     } catch (err) {
         error = err.message;
-        console.error("Error signing in:", error);
-        console.log(error);
-
         return error
     }
 }
@@ -31,3 +24,8 @@ const userLogin = () => {
 }
 
 export default userLogin
+
+// queste 3 sono le proprietà degli errori firebase 
+// console.log(err.message);  //msg lungo che spiega cosa è adato storto
+// console.log(err.code);   //  auth/too-many-requests
+// console.log(err.name);    // FirebaseError

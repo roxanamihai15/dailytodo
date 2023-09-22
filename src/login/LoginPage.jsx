@@ -10,69 +10,52 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import userLogin from "../auth/userLogin";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function LoginPage({ toggleForm }) {
-	const navigate = useNavigate();
-	const location = useLocation();
+	const navigate = useNavigate();  // se login ok, lo uso per mandare l'utente sulla pagina "protetta", home
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [errorMsg, setErrorMsg] = useState({
-		// wrong_account: '',
-		// wrong_password: '',
-		// wrong_something: ''
-	});
+	const [errorMsg, setErrorMsg] = useState({});
 
-	// const from = location.state?.form?.pathname
-	const from = location.state?.form?.pathname || "/home";
-
+    // importo da userlogin.js queste 2 cose 
 	const { error, login } = userLogin();
 
+    // network call, quindi async
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		setErrorMsg({});
-		// await login(email, password)
 		const loginError = await login(email, password); // Ottiene l'errore dal login
 
-		console.log(error);
-		console.log(loginError);
 
 		if (!loginError) {
-			// Controlla se c'è un errore
-			// if (!error) {
-			navigate(from, { replace: true });
+			navigate("/home", { replace: true });   //replace true dovrebbe toglierlo dalla history della navigazione ma non funziona
 			setEmail("");
 			setPassword("");
-			return;
+			return;   // se tutto giusto: entra nella home, cancella i campi input, esci dalla funzione
 		} else {
-			// setErrorMsg(error)
+
+            setErrorMsg({});
+
 			if (loginError === "Firebase: Error (auth/wrong-password).") {
-				// setErrorMsg('password sbagliata');
 				setErrorMsg({ ...errorMsg, wrong_password: "Invalid password" });
-				console.log(errorMsg);
-				console.log("entro qui?");
 			}
 			if (loginError === "Firebase: Error (auth/user-not-found).") {
-				//  setErrorMsg('account sbagliata');
 				setErrorMsg({ ...errorMsg, wrong_account: "Couldn't find your account" });
-				console.log(errorMsg);
-				console.log("entro qui?");
 			}
 			if (
 				loginError !== "Firebase: Error (auth/user-not-found)." &&
 				loginError !== "Firebase: Error (auth/wrong-password)."
 			) {
-				// setErrorMsg(loginError);
 				setErrorMsg({ wrong_something: loginError });
-				console.log(errorMsg);
 			}
 		}
 	};
 
 	// per input psw
-	const [showPassword, setShowPassword] = React.useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 	const handleMouseDownPassword = (event) => {
 		event.preventDefault();
@@ -81,11 +64,9 @@ function LoginPage({ toggleForm }) {
 	return (
 		<div className="auth-form-container">
 			<h1>Login to your account</h1>
-			<form action="" onSubmit={handleLogin}>
+			<form onSubmit={handleLogin}>
 				<TextField
-					sx={{ width: "100%" }}
 					label="Email"
-					// variant="filled"
 					variant="outlined"
 					margin="dense"
 					id="email"
@@ -97,7 +78,7 @@ function LoginPage({ toggleForm }) {
 				/>
 
 				<FormControl
-					sx={{ m: 1, width: "100%" }}
+                    fullWidth
 					variant="outlined"
 					margin="dense"
 					error={errorMsg.wrong_password ? true : false}
@@ -128,7 +109,6 @@ function LoginPage({ toggleForm }) {
 				{!error?.wrong_something && (
 					<div>
 						<FormHelperText error>{errorMsg.wrong_something}</FormHelperText>
-						{/* <p className="error">{errorMsg.wrong_something}</p> */}
 					</div>
 				)}
 
@@ -136,7 +116,6 @@ function LoginPage({ toggleForm }) {
 					variant="contained"
 					type="submit"
 					fullWidth
-					// onClick={login}
                     color="secondary"
 				>
 					Login
@@ -153,12 +132,6 @@ function LoginPage({ toggleForm }) {
                     <span>Email</span> prova@gmail.com <br/>
                     <span>Password</span> 123456
 				</p>
-				{/* <p className="info">
-                    Non verrà inviata alcuna email di conferma per il processo di accesso. È possibile utilizzare qualsiasi indirizzo email, anche se non esistente, per registrarsi tramite il modulo di Sign up.
-                    Tuttavia, se si preferisce accedere senza passare attraverso il modulo di iscrizione, è possibile farlo utilizzando le seguenti credenziali:                    
-                    <span>Email:</span> prova@gmail.com
-                    <span>Password:</span> 123456
-				</p> */}
 			</form>
 		</div>
 	);

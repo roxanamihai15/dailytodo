@@ -21,10 +21,7 @@ function Homepage() {
     }
 
 	const auth = getAuth();
-
-	// io parto con la mia app vuota, la riempio facendo una chiamata al database firestore
 	const [todos, setTodos] = useState([]);
-
 	const db = getFirestore();
 
 	useEffect(() => {
@@ -58,6 +55,8 @@ function Homepage() {
 		};
 
 		fetchUserTasks();
+        // se invooco fetchUserTasks allora unsubscribe diventa "onSnaphot"
+        // se non la invoco unsubscribe resta undefined
 
 		// Return cleanup function quando il componente unmounts, così onSnapshot smette di osservare le modifiche a quella collection
         // il pattern di cleanup è:
@@ -67,7 +66,7 @@ function Homepage() {
 				unsubscribe(); // Call the unsubscribe function
 			}
 		};
-	}, []);
+	}, [auth.currentUser, db]);
 
 	const handleEdit = async (todo, title) => {
 		const currentUser = auth.currentUser;
@@ -100,7 +99,6 @@ function Homepage() {
 
 	return (
 		<div className={darkMode ? `main-container` : `main-container darkMode`}>
-		{/* <div className="main-container"> */}
 			<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
 			<div className="form-container">

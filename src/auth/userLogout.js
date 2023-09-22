@@ -8,11 +8,9 @@ const logOut = async () => {
 
     try {
         await signOut(auth)
-        console.log('logout function: success logout');
         return null
     } catch (err) {
         error = err.message;
-        console.log(error);
     }
 }
 
